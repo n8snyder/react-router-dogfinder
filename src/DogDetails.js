@@ -6,22 +6,37 @@ function DogDetails() {
   const [dog, setDog] = useState({ age: "", facts: [], name: "", src: "" });
   const { name } = useParams();
 
+  console.log("name: ", name)
+  console.log("dog; ", dog)
 
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/dogs?name=${name}`).then(data => {
+  //     setDog(data.data)
+  //   });
+  // });
+
+
+
+  if (dog.name?.length === 0) {
     axios.get(`http://localhost:5000/dogs?name=${name}`).then(data => {
-      setDog(data.data)
+      setDog({ ...data.data })
     });
-  });
+  }
+
+
 
   return (
     <div className="DogDetails">
+      <h1>{dog.name}</h1>
       <p> Age: {dog.age}</p>
-      <p> Facts:
-        <ul>
-          {dog.facts.map(fact => <li>{fact}</li>)}
-        </ul>
-      </p>
+      <p> Facts:</p>
+      <ul>
+        {dog.facts?.map(fact => <li>{fact}</li>)}
+      </ul>
+      <img alt={dog.name} src={`${process.env.PUBLIC_URL}/${dog.name}.jpg`} />
+
+
     </div>
   )
 }

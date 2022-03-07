@@ -12,5 +12,8 @@ function App() {
     </div>
   );
 }
+// navbar & doglist are presentational
+
+// make async api call here (dogstate lives in app) + boolean state for API call to run other function
 
 export default App;
