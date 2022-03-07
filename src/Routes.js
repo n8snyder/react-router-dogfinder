@@ -3,14 +3,14 @@ import DogList from "./DogList";
 import DogDetails from "./DogDetails";
 
 
-function Routes() {
+function Routes({ dogs }) {
   return (
     <Switch>
       <Route exact path="/dogs" >
-        <DogList />
+        <DogList dogs={dogs} />
       </Route>
       <Route exact path="/dogs/:name" >
-        <DogDetails />
+        <DogDetails dogs={dogs} />
       </Route>
       <Redirect to="/dogs" />
     </Switch >

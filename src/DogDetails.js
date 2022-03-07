@@ -1,42 +1,29 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 
-function DogDetails() {
-  const [dog, setDog] = useState({ age: "", facts: [], name: "", src: "" });
+function DogDetails({ dogs }) {
   const { name } = useParams();
+  const dog = dogs.find(dog => dog.name.toLowerCase() === name.toLowerCase())
 
-  console.log("name: ", name)
-  console.log("dog; ", dog)
+  // if (dog === undefined) {
+  //   return <NotFound />
+  // }
 
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/dogs?name=${name}`).then(data => {
-  //     setDog(data.data)
-  //   });
-  // });
-
-
-
-  if (dog.name?.length === 0) {
-    axios.get(`http://localhost:5000/dogs?name=${name}`).then(data => {
-      setDog({ ...data.data })
-    });
-  }
-
-
+  console.log("dogs", dogs);
+  console.log("dog", dog);
+  console.log("name", name);
 
   return (
     <div className="DogDetails">
-      <h1>{dog.name}</h1>
-      <p> Age: {dog.age}</p>
-      <p> Facts:</p>
-      <ul>
-        {dog.facts?.map(fact => <li>{fact}</li>)}
-      </ul>
-      <img alt={dog.name} src={`${process.env.PUBLIC_URL}/${dog.name}.jpg`} />
-
-
+      {dog &&
+        <div>
+          <h1>{dog.name}</h1>
+          <p> Age: {dog.age}</p>
+          <p> Facts:</p>
+          <ul>
+            {dog.facts?.map(fact => <li>{fact}</li>)}
+          </ul>
+          <img alt={dog.name} src={`${process.env.PUBLIC_URL}/${dog.name}.jpg`} />
+        </div>}
     </div>
   )
 }

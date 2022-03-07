@@ -1,14 +1,7 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-function DogList() {
-  const [dogs, setDogs] = useState([]);
+function DogList({ dogs }) {
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/dogs").then(data => {
-      setDogs(data.data)
-    });
-  });
 
 
   return (
@@ -16,7 +9,9 @@ function DogList() {
       {dogs.map(dog => {
         return (
           <div key={dog.name}>
-            <h1>{dog.name}</h1>
+            <h1>
+              <Link to={`dogs/${dog.name}`}>{dog.name}</Link>
+            </h1>
             <img alt={dog.name} src={`${process.env.PUBLIC_URL}/${dog.name}.jpg`} />
           </div>
         )
