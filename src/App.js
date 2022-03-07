@@ -1,9 +1,14 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
+import Routes from './Routes';
 
 function App() {
   return (
     <div className="App">
-      <h1>Good luck!</h1>
+      <BrowserRouter>
+        {/* <Nav /> */}
+        <Routes />
+      </BrowserRouter>
     </div>
   );
 }
