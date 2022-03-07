@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import DogList from "./DogList";
-// import DogDetails from "./DogDetails";
+import DogDetails from "./DogDetails";
 
 
 function Routes() {
@@ -9,9 +9,9 @@ function Routes() {
       <Route exact path="/dogs" >
         <DogList />
       </Route>
-      {/* <Route exact path="/dogs/:name" >
+      <Route exact path="/dogs/:name" >
         <DogDetails />
-      </Route> */}
+      </Route>
       <Redirect to="/dogs" />
     </Switch >
   );
