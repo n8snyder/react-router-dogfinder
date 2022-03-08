@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import axios from "axios";
 import './App.css';
 import Routes from './Routes';
+import Nav from "./Nav";
 
 function App() {
   const [dogs, setDogs] = useState([]);
@@ -16,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Nav dogs={dogs} /> */}
+        <Nav dogs={dogs} />
         <Routes dogs={dogs} />
       </BrowserRouter>
     </div>

@@ -1,16 +1,12 @@
-import { useParams } from "react-router-dom"
+import { useParams, Redirect } from "react-router-dom";
 
 function DogDetails({ dogs }) {
   const { name } = useParams();
   const dog = dogs.find(dog => dog.name.toLowerCase() === name.toLowerCase())
 
   // if (dog === undefined) {
-  //   return <NotFound />
+  //   return <Redirect to="/dogs" />
   // }
-
-  console.log("dogs", dogs);
-  console.log("dog", dog);
-  console.log("name", name);
 
   return (
     <div className="DogDetails">
