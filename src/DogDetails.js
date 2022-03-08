@@ -16,7 +16,7 @@ function DogDetails({ dogs }) {
           <p> Age: {dog.age}</p>
           <p> Facts:</p>
           <ul>
-            {dog.facts?.map(fact => <li>{fact}</li>)}
+            {dog.facts.map((fact, i) => <li key={`${fact}-${i}`}>{fact}</li>)}
           </ul>
           <img alt={dog.name} src={`${process.env.PUBLIC_URL}/${dog.name}.jpg`} />
         </div>}
